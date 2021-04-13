@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PFE" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/Blue_1</item>
+        <item name="colorPrimaryVariant">@color/Blue_2</item>
+        <item name="colorOnPrimary">@color/Blue_2</item>
+        <item name="colorSecondary">#2962FF</item>
+        <item name="colorSecondaryVariant">#0039CB</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorError">#F44336</item>
+        <item name="colorOnError">#B30000</item>
+        <item name="colorSurface">#C80000</item>
+        <item name="colorOnSurface">@color/Blue_1</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorOnBackground">@color/white</item>
+    </style>
+
+        <style name="Theme.Test" parent="Theme.MaterialComponents.Light.DarkActionBar">
+            <item name="colorPrimary">@color/Blue_1</item>
+            <item name="colorPrimaryVariant">@color/Blue_2</item>
+            <item name="colorOnPrimary">@color/Blue_2</item>
+            <item name="colorSecondary">#2962FF</item>
+            <item name="colorSecondaryVariant">#0039CB</item>
+            <item name="colorOnSecondary">#FFFFFF</item>
+            <item name="colorError">#F44336</item>
+            <item name="colorOnError">#B30000</item>
+            <item name="colorSurface">#C80000</item>
+            <item name="colorOnSurface">@color/Blue_1</item>
+            <item name="android:colorBackground">@color/white</item>
+            <item name="colorOnBackground">@color/white</item>
+        </style>
+
+</resources>

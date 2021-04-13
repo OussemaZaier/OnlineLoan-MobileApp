@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/help"
+        android:title="Help"
+        android:enabled="true"
+        android:icon="@drawable/ic_help"/>
+
+    <item
+        android:id="@+id/providerLocation"
+        android:title="Location"
+        android:enabled="true"
+        android:icon="@drawable/ic_placeholder"/>
+    <item
+        android:id="@+id/account"
+        android:title="User"
+        android:enabled="true"
+        android:icon="@drawable/ic_user1"/>
+    <item
+        android:id="@+id/submitDemand"
+        android:title="Demand"
+        android:enabled="true"
+        android:icon="@drawable/ic_cashback"/>
+    <item
+        android:id="@+id/createProject"
+        android:title="Project"
+        android:enabled="true"
+        android:icon="@drawable/ic_lightbulb"/>
+</menu>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/account">
+    <fragment
+        android:id="@+id/help"
+        android:name="com.example.pfe.Help"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/providerLocation"
+        android:name="com.example.pfe.ProviderLocation"
+        android:label="fragment_provider_location"
+        tools:layout="@layout/fragment_provider_location" />
+    <fragment
+        android:id="@+id/account"
+        android:name="com.example.pfe.Account"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/submitDemand"
+        android:name="com.example.pfe.SubmitDemand"
+        android:label="fragment_submit_demand"
+        tools:layout="@layout/fragment_submit_demand" />
+    <fragment
+        android:id="@+id/createProject"
+        android:name="com.example.pfe.CreateProject"
+        android:label="fragment_create_project"
+        tools:layout="@layout/fragment_create_project" />
+</navigation>

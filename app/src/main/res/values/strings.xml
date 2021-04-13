@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">PFE</string>
+    <string name="name">BANK</string>
+    <string name="hint_name">If you dont have an account \n  \u0020  \u0020  \u0020  \u0020 \u0020  \u0020  \u0020 \u0020  feel free to </string>
+    <string name="createOne">join us</string>
+    <string name="CIN">CIN:</string>
+    <string name="CINHint">Enter your CIN Here</string>
+    <string name="login">Login</string>
+    <string name="PWD">Password:</string>
+    <string name="passwordHint">Enter your password here</string>
+    <string name="title_activity_register">register</string>
+    <string name="username">enter your username here</string>
+    <string name="cinsignup">enter your cin number here</string>
+    <string name="phone">enter your phone number here</string>
+    <string name="pwd1">enter your password here</string>
+    <string name="pwd2">re-enter your password here</string>
+    <string name="signup">sign up</string>
+    <string name="verify">Verify your number</string>
+    <string name="code">enter code here</string>
+    <string name="verifybtn">Verify</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_bottom_nav">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
