@@ -13,9 +13,17 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".EditPWD"
+            android:label="editPWD"
+            android:theme="@style/Theme.PFE"/>
+        <activity
+            android:name=".EditProfile"
+            android:label="editprofile"
+            android:theme="@style/Theme.PFE" />
+        <activity
             android:name=".navActivity"
             android:label="nav"
-            android:theme="@style/Theme.Test" />
+            android:theme="@style/Theme.PFE" />
         <activity
             android:name=".OTP"
             android:label="OTP"
