@@ -23,7 +23,13 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    <string name="edit">Edit</string>
+    <string name="modifyaccount">Modify Your Information</string>
+    <string name="submit">Submit</string>
+    <string name="username1">User Name :</string>
+    <string name="Cin">CIN Number:</string>
+    <string name="Phone">Phone Number :</string>
+    <string name="change">Change Password</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_login">LoginActivity</string>

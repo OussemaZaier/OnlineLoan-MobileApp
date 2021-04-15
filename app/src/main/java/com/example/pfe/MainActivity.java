@@ -53,16 +53,16 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(etCIN.getText().toString().equals("")||etPassword.getText().toString().equals("")){
-                    new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Something went wrong!")
-                            .setContentText("one field is empty")
-                            .show();
-                }
-                else {
-                    sendAndRequestResponse();
-                }
+                startActivity(new Intent(MainActivity.this,navActivity.class));
+//                if(etCIN.getText().toString().equals("")||etPassword.getText().toString().equals("")){
+//                    new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE)
+//                            .setTitleText("Something went wrong!")
+//                            .setContentText("one field is empty")
+//                            .show();
+//                }
+//                else {
+//                    sendAndRequestResponse();
+//                }
 
             }
         });
