@@ -76,14 +76,23 @@ public class register extends AppCompatActivity {
                                 .show();
                     }
                     else{
+//                        if(checkIfUserExist()){
+//                            new SweetAlertDialog(register.this, SweetAlertDialog.ERROR_TYPE)
+//                                    .setTitleText("Something went wrong!")
+//                                    .setContentText("User with this CIN number already exist")
+//                                    .show();
+//                        }else{
+//
+//                        }
                         //generate random number for OTP
                         Random random=new Random();
                         randomNumber=random.nextInt(999999);
                         code=String.format("%06d", randomNumber);
 
+                        checkIfUserExist();
                         //sendCode(code);
                         Toast.makeText(getApplicationContext(),code,Toast.LENGTH_LONG).show();
-                        openActivity();
+                       // openActivity();
                     }
                 }
             }
@@ -107,6 +116,53 @@ public class register extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    private void checkIfUserExist() {
+        String URL="http://192.168.1.15:8080/rest/webapi/myresource/exist";
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        StringRequest objectRequest=new StringRequest(
+                Request.Method.POST,
+                URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if(response.equals("1"))
+                        {
+                            new SweetAlertDialog(register.this)
+                                    .setTitleText("exist")
+                                    .show();
+                        }
+                        else
+                        {
+                            new SweetAlertDialog(register.this, SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Something went wrong!")
+                                    .setContentText(response.toString())
+                                    .show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        new SweetAlertDialog(register.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Something went wrong!")
+                                .setContentText(error.toString())
+                                .show();
+                    }
+                })
+        {
+            @Override
+            public Map<String,String> getHeaders() throws AuthFailureError {
+                Map<String,String> params=new HashMap<>();
+                params.put("CIN",CIN.getText().toString());
+                return params;
+            }
+        };
+        requestQueue.add(objectRequest);
+
+    }
+
     private void sendCode(String code) {
         String URL="http://192.168.1.15:8080/rest/webapi/myresource/sendOTP";
         RequestQueue requestQueue= Volley.newRequestQueue(this);
