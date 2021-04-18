@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -53,16 +54,16 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,navActivity.class));
-//                if(etCIN.getText().toString().equals("")||etPassword.getText().toString().equals("")){
-//                    new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE)
-//                            .setTitleText("Something went wrong!")
-//                            .setContentText("one field is empty")
-//                            .show();
-//                }
-//                else {
-//                    sendAndRequestResponse();
-//                }
+                //startActivity(new Intent(MainActivity.this,navActivity.class));
+                if(etCIN.getText().toString().equals("")||etPassword.getText().toString().equals("")){
+                    new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Something went wrong!")
+                            .setContentText("one field is empty")
+                            .show();
+                }
+                else {
+                    sendAndRequestResponse();
+                }
 
             }
         });
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void sendAndRequestResponse() {
-        String URL="http://192.168.1.15:8080/rest/webapi/myresource/authenticate";
+        String URL="http://192.168.1.16:8080/rest/webapi/myresource/authenticate";
         RequestQueue requestQueue=Volley.newRequestQueue(this);
         StringRequest objectRequest=new StringRequest(
                 Request.Method.POST,
@@ -123,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
                 return params;
             }
         };
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                9000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(objectRequest);
 
     }

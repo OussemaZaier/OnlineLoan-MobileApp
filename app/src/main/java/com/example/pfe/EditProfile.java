@@ -2,6 +2,7 @@ package com.example.pfe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,16 +17,13 @@ public class EditProfile extends AppCompatActivity {
 
     private Button btnSubmit;
 
-    private Button btnSign;
+
     private EditText username;
     private EditText CIN;
     private EditText phone;
-    private EditText PWD1;
-    private EditText PWD2;
     private String username1;
     private String CIN1;
     private String phone1;
-    private String PWD11;
     private int randomNumber;
     private String code;
 
@@ -42,7 +40,7 @@ public class EditProfile extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().equals("")||CIN.getText().toString().equals("")||phone.getText().toString().equals("")||PWD1.getText().toString().equals("")||PWD2.getText().toString().equals(""))
+                if (username.getText().toString().equals("")||CIN.getText().toString().equals("")||phone.getText().toString().equals(""))
                 {
                     new SweetAlertDialog(EditProfile.this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Something went wrong!")
@@ -57,9 +55,24 @@ public class EditProfile extends AppCompatActivity {
 
                     //sendCode(code);
                     Toast.makeText(getApplicationContext(),code,Toast.LENGTH_LONG).show();
-                    //openActivity();
+                    openActivity();
                 }
             }
         });
+    }
+    public void openActivity(){
+        Intent intent = new Intent(this,ModifyOTP.class);
+
+        username1=username.getText().toString();
+        CIN1=CIN.getText().toString();
+        phone1=phone.getText().toString();
+
+        intent.putExtra("code",code);
+        intent.putExtra("signupUserName",username1);
+        intent.putExtra("signupCIN",CIN1);
+        intent.putExtra("signupPhone",phone1);
+
+        startActivity(intent);
+
     }
 }

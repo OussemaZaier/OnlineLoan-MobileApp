@@ -26,6 +26,10 @@
     <string name="edit">Edit</string>
     <string name="modifyaccount">Modify Your Information</string>
     <string name="submit">Submit</string>
+    <string name="currentpwd">enter your current password</string>
+    <string name="newpwd1">enter your new password</string>
+    <string name="newpwd2">re-enter your new password</string>
+    <string name="modifypwd">Modify your Password</string>
     <string name="username1">User Name :</string>
     <string name="Cin">CIN Number:</string>
     <string name="Phone">Phone Number :</string>
