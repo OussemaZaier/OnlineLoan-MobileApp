@@ -21,13 +21,13 @@ public class navActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav);
 
-//        //bottom nav
+        //bottom nav
 //        BottomNavigationView btnNav=findViewById(R.id.Nav);
 //        NavController navController= Navigation.findNavController(this,R.id.fragment);
 //
-//        //AppBarConfiguration appBarConfiguration =
-//        //        new AppBarConfiguration.Builder(R.id.help,R.id.providerLocation,R.id.account,R.id.submitDemand,R.id.createProject).build();
-//       // NavigationUI.setupActionBarWithNavController(navController);
+//        AppBarConfiguration appBarConfiguration =
+//                new AppBarConfiguration.Builder(R.id.help,R.id.providerLocation,R.id.account,R.id.submitDemand,R.id.createProject).build();
+////        NavigationUI.setupActionBarWithNavController(navController);
 //
 //        NavigationUI.setupWithNavController(btnNav, navController);
 //        BottomNavigationView bottomNav = findViewById(R.id.Nav);

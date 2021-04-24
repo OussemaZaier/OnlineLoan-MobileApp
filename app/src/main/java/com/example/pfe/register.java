@@ -44,6 +44,7 @@ public class register extends AppCompatActivity {
     private String PWD11;
     private int randomNumber;
     private String code;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,23 +77,7 @@ public class register extends AppCompatActivity {
                                 .show();
                     }
                     else{
-//                        if(checkIfUserExist()){
-//                            new SweetAlertDialog(register.this, SweetAlertDialog.ERROR_TYPE)
-//                                    .setTitleText("Something went wrong!")
-//                                    .setContentText("User with this CIN number already exist")
-//                                    .show();
-//                        }else{
-//
-//                        }
-                        //generate random number for OTP
-                        Random random=new Random();
-                        randomNumber=random.nextInt(999999);
-                        code=String.format("%06d", randomNumber);
-
                         checkIfUserExist();
-                        //sendCode(code);
-                        Toast.makeText(getApplicationContext(),code,Toast.LENGTH_LONG).show();
-                       // openActivity();
                     }
                 }
             }
@@ -118,7 +103,7 @@ public class register extends AppCompatActivity {
     }
 
     private void checkIfUserExist() {
-        String URL="http://192.168.1.15:8080/rest/webapi/myresource/exist";
+        String URL="http://192.168.1.16:8080/rest/webapi/myresource/exist";
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         StringRequest objectRequest=new StringRequest(
                 Request.Method.POST,
@@ -129,16 +114,22 @@ public class register extends AppCompatActivity {
 
                         if(response.equals("1"))
                         {
-                            new SweetAlertDialog(register.this)
-                                    .setTitleText("exist")
+                            new SweetAlertDialog(register.this, SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Something went wrong!")
+                                    .setContentText("User with this CIN number already exist")
                                     .show();
                         }
                         else
                         {
-                            new SweetAlertDialog(register.this, SweetAlertDialog.ERROR_TYPE)
-                                    .setTitleText("Something went wrong!")
-                                    .setContentText(response.toString())
-                                    .show();
+                            //generate random number for OTP
+                            Random random=new Random();
+                            randomNumber=random.nextInt(999999);
+                            code=String.format("%06d", randomNumber);
+
+                            //sendCode(code);
+                            Toast.makeText(getApplicationContext(),code,Toast.LENGTH_LONG).show();
+                            openActivity();
+
                         }
                     }
                 },
@@ -164,7 +155,7 @@ public class register extends AppCompatActivity {
     }
 
     private void sendCode(String code) {
-        String URL="http://192.168.1.15:8080/rest/webapi/myresource/sendOTP";
+        String URL="http://192.168.1.16:8080/rest/webapi/myresource/sendOTP";
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         StringRequest objectRequest=new StringRequest(
                 Request.Method.POST,
