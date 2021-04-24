@@ -1,15 +1,20 @@
 package com.example.pfe;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
 import android.app.VoiceInteractor;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -18,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ByteArrayPool;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -38,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogin;
     private Button btnCreate;
 
+    //test
+    private ImageView img;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +57,18 @@ public class MainActivity extends AppCompatActivity {
         btnLogin=(Button) findViewById(R.id.btnLogin);
         btnCreate=(Button) findViewById(R.id.btnCreate);
 
-
-
+//        //getimage
+//        img=(ImageView)findViewById(R.id.imageView3);
+//        img.setDrawingCacheEnabled(true);
+//        img.buildDrawingCache();
+//        Bitmap bt=img.getDrawingCache();
+//        ByteArrayOutputStream bit=new ByteArrayOutputStream();
+//        bt.compress(Bitmap.CompressFormat.PNG,5,bit);
+//
+//        //test
+//        byte[] blob= bit.toByteArray();
+//        bt= BitmapFactory.decodeByteArray(blob,0,blob.length);
+//        img.setImageBitmap(bt);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

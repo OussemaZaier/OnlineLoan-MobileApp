@@ -2,6 +2,7 @@ package com.example.pfe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -54,6 +55,13 @@ public class OTP extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(code.getText().toString().equals("")){
+                    new SweetAlertDialog(OTP.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Something went wrong!")
+                            .setContentText("code field is empty!")
+                            .show();
+                }
+                else{
                 if(code.getText().toString().equals(random)){
                     sendAndRequestResponse();
                     new SweetAlertDialog(OTP.this)
@@ -65,13 +73,12 @@ public class OTP extends AppCompatActivity {
                             .setContentText("wrong code!")
                             .show();
                 }
-
-
+                }
             }
         });
     }
     private void sendAndRequestResponse() {
-        String URL="http://192.168.1.15:8080/rest/webapi/myresource/create";
+        String URL="http://192.168.1.16:8080/rest/webapi/myresource/create";
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         StringRequest objectRequest=new StringRequest(
                 Request.Method.PUT,
@@ -79,13 +86,15 @@ public class OTP extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        code.setText(response.toString());
+
+                        ((CIN) getApplication()).setCIN(CIN);
+                        //code.setText(((CIN) getApplication()).getCIN());
+                        startActivity(new Intent(OTP.this,navActivity.class));
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //Log.e("response",error.toString());
                         code.setText(error.toString());
                     }
                 })

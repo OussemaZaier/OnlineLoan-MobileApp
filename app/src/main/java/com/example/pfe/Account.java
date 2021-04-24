@@ -12,6 +12,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Account#newInstance} factory method to
@@ -31,6 +49,11 @@ public class Account extends Fragment {
     //Buttons
     private Button Edit;
     private Button ModifyPWD;
+    //textfields
+    private TextView MainUserName;
+    private EditText User;
+    private EditText Cin;
+    private EditText Phone;
     public Account() {
         // Required empty public constructor
     }
@@ -74,6 +97,13 @@ public class Account extends Fragment {
         Edit=(Button) view.findViewById(R.id.Modify);
         ModifyPWD=(Button) view.findViewById(R.id.ChangePwd);
 
+        MainUserName=(TextView) view.findViewById(R.id.UserName);
+        User=(EditText) view.findViewById(R.id.User);
+        Cin=(EditText) view.findViewById(R.id.CINnumber);
+        Phone=(EditText) view.findViewById(R.id.PhoneNumber);
+
+        getUserData();
+
         Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,5 +123,43 @@ public class Account extends Fragment {
         return view;
 
     }
+    private void getUserData() {
+        String URL = "http://192.168.1.16:8080/rest/webapi/myresource/get";
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, URL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
 
+                        try {
+                            MainUserName.setText(response.getString("name"));
+                            User.setText(response.getString("name"));
+                            Cin.setText(response.getString("CIN"));
+                            Phone.setText(response.getString("phoneNumber"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Something went wrong!")
+                        .setContentText(error.toString())
+                        .show();
+
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("CIN", ((CIN) getActivity().getApplication()).getCIN());
+
+                return params;
+            }
+        };
+        requestQueue.add(objectRequest);
+    }
 }

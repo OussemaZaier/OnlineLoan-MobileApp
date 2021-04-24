@@ -3,6 +3,8 @@ package com.example.pfe;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,10 @@ public class CreateProject extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+    //dec
+    String s1[],s2[];
+    RecyclerView Projects;
     public CreateProject() {
         // Required empty public constructor
     }
@@ -59,6 +65,14 @@ public class CreateProject extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_project, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_project, container, false);
+
+        Projects=(RecyclerView) view.findViewById(R.id.Projects);
+        s1=getResources().getStringArray(R.array.test);
+        s2=getResources().getStringArray(R.array.testdesc);
+        ProjectsAdapter myAdapter=new ProjectsAdapter(getContext(),s1,s2);
+        Projects.setAdapter(myAdapter);
+        Projects.setLayoutManager(new LinearLayoutManager(getContext()));
+        return view;
     }
 }
