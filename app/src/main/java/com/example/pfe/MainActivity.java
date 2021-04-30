@@ -57,19 +57,28 @@ public class MainActivity extends AppCompatActivity {
         btnLogin=(Button) findViewById(R.id.btnLogin);
         btnCreate=(Button) findViewById(R.id.btnCreate);
 
-//        //getimage
-//        img=(ImageView)findViewById(R.id.imageView3);
-//        img.setDrawingCacheEnabled(true);
-//        img.buildDrawingCache();
-//        Bitmap bt=img.getDrawingCache();
-//        ByteArrayOutputStream bit=new ByteArrayOutputStream();
-//        bt.compress(Bitmap.CompressFormat.PNG,5,bit);
+////        //getimage
+////        img=(ImageView)findViewById(R.id.imageView3);
+////        img.setDrawingCacheEnabled(true);
+////        img.buildDrawingCache();
+////        Bitmap bt=img.getDrawingCache();
+////        ByteArrayOutputStream bit=new ByteArrayOutputStream();
+////        bt.compress(Bitmap.CompressFormat.PNG,5,bit);
+////
+////        //test
+////        byte[] blob= bit.toByteArray();
+////        bt= BitmapFactory.decodeByteArray(blob,0,blob.length);
+////        img.setImageBitmap(bt);
+//        Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.phone);
+//        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+//        //bitmap.compress(Bitmap.CompressFormat.PNG, 100,byteArrayOutputStream);
+//        byte[] blob=byteArrayOutputStream.toByteArray();
 //
-//        //test
-//        byte[] blob= bit.toByteArray();
-//        bt= BitmapFactory.decodeByteArray(blob,0,blob.length);
-//        img.setImageBitmap(bt);
-
+//        new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE)
+//                .setTitleText("Something went wrong!")
+//                .setContentText("si")
+//                .show();
+//        //byte[] bytesImage=byteArrayOutputStream.toByteArray();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                             .show();
                 }
                 else {
+                    //startActivity(new Intent(MainActivity.this,navActivity.class));
                     sendAndRequestResponse();
                 }
 

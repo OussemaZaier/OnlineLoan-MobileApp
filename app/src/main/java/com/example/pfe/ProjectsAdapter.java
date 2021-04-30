@@ -9,12 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProjectsAdapter extends RecyclerView.Adapter <ProjectsAdapter.MyProjectsHolder>{
-    String data1[], data2[];
+    String data1[],data2[];
+    List<Project> projects=new ArrayList<>();
     Context context;
-    public ProjectsAdapter(Context ct, String s1[], String s2[]) {
+    public ProjectsAdapter(Context ct, List<Project> Projects, String s2[]) {
         context=ct;
-        data1=s1;
+        projects=Projects;
         data2=s2;
     }
 
@@ -28,12 +32,12 @@ public class ProjectsAdapter extends RecyclerView.Adapter <ProjectsAdapter.MyPro
 
     @Override
     public void onBindViewHolder(@NonNull MyProjectsHolder holder, int position) {
-        holder.ProjectTitle.setText(data1[position]);
+        holder.ProjectTitle.setText(projects.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return data1.length;
+        return projects.size();
     }
 
     public class MyProjectsHolder extends RecyclerView.ViewHolder{
