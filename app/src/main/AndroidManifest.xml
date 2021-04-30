@@ -3,6 +3,7 @@
     package="com.example.pfe">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".CIN"
@@ -12,10 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
+        <activity android:name=".AddProject"
+            android:label="addproject"
+            android:theme="@style/Theme.PFE"/>
+        <activity
+            android:name=".Upload"
+            android:label="upload"
+            android:theme="@style/Theme.PFE" />
         <activity
             android:name=".ModifyOTP"
             android:label="Modifyotp"
-            android:theme="@style/Theme.PFE"/>
+            android:theme="@style/Theme.PFE" />
         <activity
             android:name=".EditPWD"
             android:label="editPWD"

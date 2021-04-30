@@ -69,12 +69,10 @@ public class EditPWD extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
-                        new SweetAlertDialog(EditPWD.this, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText("Something went wrong!")
-                                .setContentText(response)
+                        new SweetAlertDialog(EditPWD.this)
+                                .setTitleText("changed successfully")
                                 .show();
-                        //startActivity(new Intent(EditPWD.this,navActivity.class));
+                        startActivity(new Intent(EditPWD.this,navActivity.class));
                     }
                 },
                 new Response.ErrorListener() {

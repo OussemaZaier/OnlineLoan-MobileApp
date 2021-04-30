@@ -51,18 +51,20 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string-array name="test">
-        <item>project 1</item>
-        <item>project 2</item>
-        <item>project 3</item>
-        <item>project 4</item>
-        <item>project 5</item>
-        <item>project 6</item>
-        <item>project 7</item>
-        <item>project 8</item>
-        <item>project 9</item>
-        <item>project 10</item>
-        <item>project 11</item>
+    <string name="projects">Projects</string>
+    <string name="addproject">Add new project</string>
+    <string name="projectType">Select your project type</string>
+    <string name="projectname">Enter your project name here</string>
+    <string name="projectdescription">Enter your project description here</string>
+    <string name="projectsurface">Enter your project surface here</string>
+    <string name="pictureDiplome">Select your diploma picture</string>
+    <string name="setpicture">choose</string>
+    <string name="pictureLogo">Select your logo picture</string>
+    <string name="add">Add</string>
+    <string-array name="projectType">
+        <item>Medical Cabinet</item>
+        <item>Commercial</item>
+        <item>Agriculture</item>
     </string-array>
     <string-array name="testdesc">
         <item>project desc 1</item>
