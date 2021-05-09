@@ -57,10 +57,24 @@
     <string name="projectname">Enter your project name here</string>
     <string name="projectdescription">Enter your project description here</string>
     <string name="projectsurface">Enter your project surface here</string>
-    <string name="pictureDiplome">Select your diploma picture</string>
+    <string name="pictureDiplome">Select your front local picture</string>
+    <string name="FrontPicLocal">Select your inside local picture</string>
+    <string name="InsidePicLocal">Select your diploma picture</string>
+    <string name="signaturePic">Set your signature</string>
+    <string name="frontCIN">Select your front CIN picture</string>
+    <string name="backCIN">Select your back CIN picture</string>
     <string name="setpicture">choose</string>
     <string name="pictureLogo">Select your logo picture</string>
     <string name="add">Add</string>
+    <string name="GeneralInfo">General information</string>
+    <string name="LocalInfo">Local information</string>
+    <string name="GuaranteeInfo">Guarantee information</string>
+    <string name="SignatureSet">Set your signature</string>
+    <string name="setLocation">Set your location</string>
+    <string name="save">SAVE</string>
+    <string name="address">Address:</string>
+    <string name="clear">CLEAR</string>
+    <string name="SET">SET</string>
     <string-array name="projectType">
         <item>Medical Cabinet</item>
         <item>Commercial</item>

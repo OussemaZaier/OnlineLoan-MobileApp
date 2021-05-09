@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,6 +20,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.pfe.databinding.ActivityAddProjectBinding;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -27,6 +37,10 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class AddProject extends AppCompatActivity {
     //get the spinner from the xml.
@@ -55,7 +69,6 @@ public class AddProject extends AppCompatActivity {
 
                 switch (selectedValue){
                     case "Medical Cabinet":
-                        Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_LONG).show();
                         binding.surface.setVisibility(View.GONE);
                         binding.pictureLogo.setVisibility(View.GONE);
                         binding.pictureDiploma.setVisibility(View.VISIBLE);
@@ -90,7 +103,6 @@ public class AddProject extends AppCompatActivity {
                         break;
 
                     case "Commercial":
-                        Toast.makeText(getApplicationContext(),"2",Toast.LENGTH_LONG).show();
                         binding.surface.setVisibility(View.GONE);
                         binding.pictureDiploma.setVisibility(View.GONE);
                         binding.pictureLogo.setVisibility(View.VISIBLE);
@@ -125,7 +137,6 @@ public class AddProject extends AppCompatActivity {
                         break;
 
                     case "Agriculture":
-                        Toast.makeText(getApplicationContext(),"3",Toast.LENGTH_LONG).show();
                         binding.surface.setVisibility(View.VISIBLE);
                         binding.pictureDiploma.setVisibility(View.GONE);
                         binding.pictureLogo.setVisibility(View.GONE);
@@ -133,6 +144,28 @@ public class AddProject extends AppCompatActivity {
 
                 }
             }});
+        binding.btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(binding.name.getText().toString().equals("")||binding.description.getText().toString().equals("")||binding.autoCompleteTextView.getText().toString().equals(getResources().getString(R.string.projectType))){
+                    new SweetAlertDialog(AddProject.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Something went wrong!")
+                            .setContentText("one field is empty")
+                            .show();
+                }
+                else {
+                    if(binding.autoCompleteTextView.getText().toString().equals("Agriculture")&&binding.surface.getText().toString().equals("")){
+                        new SweetAlertDialog(AddProject.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Something went wrong!")
+                                .setContentText("one field is empty")
+                                .show();
+                }else{
+                         addProject();
+                    }
+                }
+            }
+        });
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
@@ -164,5 +197,56 @@ public class AddProject extends AppCompatActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+    private void addProject() {
+        String URL="http://192.168.1.16:8080/rest/webapi/projects/add";
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        StringRequest objectRequest=new StringRequest(
+                Request.Method.PUT,
+                URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+//                        new SweetAlertDialog(AddProject.this)
+//                                .setTitleText("login successfully")
+//                                .show();
+                        //getFragmentManager().popBackStack();
+                        startActivity(new Intent(AddProject.this,navActivity.class));
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        new SweetAlertDialog(AddProject.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Something went wrong!")
+                                .setContentText(error.toString())
+                                .show();
+                    }
+                })
+        {
+            @Override
+            public Map<String,String> getHeaders() throws AuthFailureError {
+                Map<String,String> params=new HashMap<>();
+
+                params.put("name",binding.name.getText().toString());
+                params.put("description",binding.description.getText().toString());
+                if(binding.autoCompleteTextView.getText().toString().equals("Agriculture")){
+                    params.put("surface",binding.surface.getText().toString());
+                    params.put("type","3");
+                }
+                else{
+                    params.put("surface","-1");
+                    if(binding.autoCompleteTextView.getText().toString().equals("Medical Cabinet")){
+                        params.put("type","1");
+                    }else{
+                        params.put("type","2");
+                    }
+                }
+                params.put("user", ((CIN) getApplication()).getCIN());
+                return params;
+            }
+        };
+        requestQueue.add(objectRequest);
     }
 }

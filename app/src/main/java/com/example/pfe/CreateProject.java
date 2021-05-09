@@ -1,9 +1,14 @@
 package com.example.pfe;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,13 +18,16 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.pfe.databinding.FragmentCreateProjectBinding;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -54,11 +62,17 @@ public class CreateProject extends Fragment {
 
     FloatingActionButton add;
 
+    FragmentCreateProjectBinding fragmentCreateProjectBinding;
     //dec
-    String s1[], s2[];
-    RecyclerView Projects;
-    List<Project> projects;
-
+    private String s1[], s2[];
+    private RecyclerView Projects;
+    private List<Project> projects;
+    private ProjectsAdapter.RecyclerViewListener listener;
+    private SweetAlertDialog.OnSweetClickListener Modify;
+    private SweetAlertDialog.OnSweetClickListener Delete;
+    private SweetAlertDialog.OnSweetClickListener refresh;
+    private SweetAlertDialog.OnSweetClickListener no;
+    private String pos;
     public CreateProject() {
         // Required empty public constructor
     }
@@ -93,9 +107,16 @@ public class CreateProject extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_create_project, container, false);
-
+        fragmentCreateProjectBinding=FragmentCreateProjectBinding.inflate(inflater,container,false);
+        View view=fragmentCreateProjectBinding.getRoot();
+        fragmentCreateProjectBinding.empty.setVisibility(View.GONE);
+        setOnClickListnerModify();
+        setOnClickListnerDelete();
+        setOnClickListnerRefresh();
+        setOnClickListnerNo();
+        projects = new ArrayList<>();
+        Projects = (RecyclerView) view.findViewById(R.id.Projects);
+        getUserProjects();
         add=(FloatingActionButton) view.findViewById(R.id.Add);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,12 +125,71 @@ public class CreateProject extends Fragment {
             }
         });
 
-        projects = new ArrayList<>();
-        getUserProjects();
-        Projects = (RecyclerView) view.findViewById(R.id.Projects);
-        s1 = getResources().getStringArray(R.array.testdesc);
 
         return view;
+    }
+
+    private void setOnClickListner(){
+        listener=new ProjectsAdapter.RecyclerViewListener() {
+            @Override
+            public void onClick(View v, int position) {
+                new SweetAlertDialog(getContext(), SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                        .setTitleText(projects.get(position).getName())
+                        .setContentText(projects.get(position).getDescription())
+                        .setConfirmText("Modify")
+                        .setCancelText("Delete")
+                        .setCustomImage(R.drawable.ic_lightbulb)
+                        .setConfirmClickListener(Modify)
+                        .setCancelClickListener(Delete)
+                        .show();
+                pos=projects.get(position).getId();
+            }
+        };
+    }
+
+    private void setOnClickListnerModify(){
+        Modify=new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.cancel();
+                Intent intent=new Intent(getContext(),SelectModifyProject.class);
+                intent.putExtra("id",pos);
+                startActivity(intent);
+            }
+        };
+    }
+    private void setOnClickListnerDelete(){
+        Delete=new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.cancel();
+                new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("are you sure you want to delete project")
+                        .setConfirmText("Yes")
+                        .setCancelText("No")
+                        .setConfirmClickListener(refresh)
+                        .setCancelClickListener(no)
+                        .show();
+            }
+        };
+    }
+    private void setOnClickListnerRefresh(){
+        refresh=new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.cancel();
+                deleteProject(pos);
+
+            }
+        };
+    }
+    private void setOnClickListnerNo(){
+        no=new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.cancel();
+            }
+        };
     }
 
     private void getUserProjects() {
@@ -122,10 +202,13 @@ public class CreateProject extends Fragment {
                     try {
                         JSONObject projectObject = response.getJSONObject(i);
                         Project project = new Project();
+                        project.setId(projectObject.getString("id"));
                         project.setName(projectObject.getString("name"));
+                        project.setDescription(projectObject.getString("description"));
                         projects.add(project);
                         s2 = getResources().getStringArray(R.array.testdesc);
-                        ProjectsAdapter myAdapter = new ProjectsAdapter(getContext(), projects, s2);
+                        setOnClickListner();
+                        ProjectsAdapter myAdapter = new ProjectsAdapter(getContext(), projects, s2,listener);
                         Projects.setAdapter(myAdapter);
                         Projects.setLayoutManager(new LinearLayoutManager(getContext()));
                     } catch (JSONException e) {
@@ -135,14 +218,12 @@ public class CreateProject extends Fragment {
                                 .show();
                     }
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Something went wrong!")
-                        .setContentText(error.toString())
-                        .show();
+                fragmentCreateProjectBinding.empty.setVisibility(View.VISIBLE);
             }
         }){
             @Override
@@ -155,5 +236,37 @@ public class CreateProject extends Fragment {
             }
         };
         requestQueue.add(jsonArrayRequest);
+    }
+    private void deleteProject(String pose) {
+        String URL="http://192.168.1.16:8080/rest/webapi/projects/delete";
+        RequestQueue requestQueue=Volley.newRequestQueue(getContext());
+        StringRequest objectRequest=new StringRequest(
+                Request.Method.DELETE,
+                URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        projects.clear();
+                        getUserProjects();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Something went wrong!")
+                                .setContentText(error.toString())
+                                .show();
+                    }
+                })
+        {
+            @Override
+            public Map<String,String> getHeaders() throws AuthFailureError{
+                Map<String,String> params=new HashMap<>();
+                params.put("ID",pose);
+                return params;
+            }
+        };
+        requestQueue.add(objectRequest);
     }
 }

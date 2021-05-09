@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddProject"
+    tools:context=".LocalInfo"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="@drawable/bg1">
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bebas"
-        android:text="@string/addproject"
+        android:text="@string/LocalInfo"
         android:textColor="@color/Blue_1"
         android:textSize="50dp"
         android:layout_marginTop="10dp"
@@ -22,112 +21,85 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="10dp"/>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
+        android:id="@+id/Location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginTop="70dp"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusTopStart="10dp">
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/projectname"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:layout_marginBottom="50px"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusTopStart="10dp">
-
-        <EditText
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50px"
-            android:hint="@string/projectdescription"
-            android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textSize="15dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:boxStrokeColor="@color/white"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusTopStart="10dp"
+        android:background="@drawable/button_1"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="50px"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="50px"
         >
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:clickable="false"
-            android:focusable="false"
-            android:inputType="none"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="50px"
-            android:text="@string/projectType"
-            android:textColor="@color/white"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            app:cardBackgroundColor="@color/float_transparent"
+            app:cardElevation="0dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusTopStart="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address"
+                    android:textColor="@color/Blue_1"/>
 
-        <EditText
-            android:id="@+id/surface"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50px"
-            android:hint="@string/projectsurface"
-            android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textSize="15dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/Address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="40dp"
+                    android:text="@string/FrontPicLocal"
+                    android:textColor="@color/black" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/float_transparent"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/SetLocation"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_1"
+                    android:text="@string/setLocation"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
     <LinearLayout
-        android:id="@+id/pictureDiploma"
+        android:id="@+id/FrontLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_1"
@@ -135,7 +107,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="50px"
->
+        >
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
@@ -151,7 +123,7 @@
                 android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/img"
+                    android:id="@+id/FrontLocalPic"
                     android:layout_width="250dp"
                     android:layout_height="250dp"
                     app:srcCompat="@drawable/addpic" />
@@ -174,11 +146,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pictureDiplome"
+                    android:text="@string/FrontPicLocal"
                     android:textColor="@color/Blue_1"/>
 
                 <Button
-                    android:id="@+id/choosePic"
+                    android:id="@+id/btnFrontLocal"
                     android:layout_width="100dp"
                     android:layout_height="60dp"
                     android:layout_alignParentStart="true"
@@ -196,13 +168,14 @@
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/pictureLogo"
+        android:id="@+id/InsideLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_1"
         android:backgroundTint="@color/white"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="50px"
         >
 
         <com.google.android.material.card.MaterialCardView
@@ -219,7 +192,7 @@
                 android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/imgLogo"
+                    android:id="@+id/InsideLocalPic"
                     android:layout_width="250dp"
                     android:layout_height="250dp"
                     app:srcCompat="@drawable/addpic" />
@@ -242,11 +215,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pictureLogo"
+                    android:text="@string/InsidePicLocal"
                     android:textColor="@color/Blue_1"/>
 
                 <Button
-                    android:id="@+id/chooseLogoPic"
+                    android:id="@+id/btnInsideLocal"
                     android:layout_width="100dp"
                     android:layout_height="60dp"
                     android:layout_alignParentStart="true"

@@ -16,10 +16,12 @@ public class ProjectsAdapter extends RecyclerView.Adapter <ProjectsAdapter.MyPro
     String data1[],data2[];
     List<Project> projects=new ArrayList<>();
     Context context;
-    public ProjectsAdapter(Context ct, List<Project> Projects, String s2[]) {
+    private RecyclerViewListener listener;
+    public ProjectsAdapter(Context ct, List<Project> Projects, String s2[], RecyclerViewListener listener) {
         context=ct;
         projects=Projects;
         data2=s2;
+        this.listener=listener;
     }
 
     @NonNull
@@ -39,12 +41,21 @@ public class ProjectsAdapter extends RecyclerView.Adapter <ProjectsAdapter.MyPro
     public int getItemCount() {
         return projects.size();
     }
-
-    public class MyProjectsHolder extends RecyclerView.ViewHolder{
+    public interface RecyclerViewListener{
+        void onClick(View v,int position);
+    }
+    public class MyProjectsHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView ProjectTitle;
         public MyProjectsHolder(@NonNull View itemView) {
             super(itemView);
             ProjectTitle=itemView.findViewById(R.id.ProjectName);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            listener.onClick(itemView,getAdapterPosition());
         }
     }
+
 }
