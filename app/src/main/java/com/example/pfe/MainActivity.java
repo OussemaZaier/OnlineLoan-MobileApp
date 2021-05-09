@@ -1,6 +1,8 @@
 package com.example.pfe;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     //test
     private ImageView img;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
                             .show();
                 }
                 else {
-                    //startActivity(new Intent(MainActivity.this,navActivity.class));
+                    ((CIN) getApplication()).setCIN(etCIN.getText().toString());
+                    //start activity
+                    //startActivity(new Intent(MainActivity.this,SignaturePad.class));
                     sendAndRequestResponse();
                 }
 
@@ -117,13 +122,13 @@ public class MainActivity extends AppCompatActivity {
 
                         if(response.equals("1"))
                         {
-                            new SweetAlertDialog(MainActivity.this)
-                                .setTitleText("login successfully")
-                                .show();
+                            Toast.makeText(getApplicationContext(),"logged in successfully",Toast.LENGTH_LONG).show();
                             //store CIN number
                             ((CIN) getApplication()).setCIN(etCIN.getText().toString());
                             //start activity
-                            startActivity(new Intent(MainActivity.this,navActivity.class));
+                            Intent intent =new Intent(MainActivity.this,navActivity.class);
+//                            intent.putExtra("id",1);
+                            startActivity(intent);
                         }
                         else
                         {
@@ -171,4 +176,5 @@ public class MainActivity extends AppCompatActivity {
             return("Exception thrown for incorrect algorithm: " + e);
         }
     }
+
 }

@@ -69,10 +69,18 @@ public class EditPWD extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        if(response.equals("1")){
                         new SweetAlertDialog(EditPWD.this)
                                 .setTitleText("changed successfully")
                                 .show();
                         startActivity(new Intent(EditPWD.this,navActivity.class));
+                        }
+                        else{
+                            new SweetAlertDialog(EditPWD.this, SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Something went wrong!")
+                                    .setContentText("Wrong password!")
+                                    .show();
+                        }
                     }
                 },
                 new Response.ErrorListener() {

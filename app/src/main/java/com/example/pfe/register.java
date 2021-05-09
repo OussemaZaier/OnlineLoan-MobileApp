@@ -86,7 +86,6 @@ public class register extends AppCompatActivity {
 
     public void openActivity(){
         Intent intent = new Intent(this,OTP.class);
-
         username1=username.getText().toString();
         CIN1=CIN.getText().toString();
         phone1=phone.getText().toString();

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -15,36 +17,45 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class navActivity extends AppCompatActivity {
-
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav);
-
-        //bottom nav
-//        BottomNavigationView btnNav=findViewById(R.id.Nav);
-//        NavController navController= Navigation.findNavController(this,R.id.fragment);
-//
-//        AppBarConfiguration appBarConfiguration =
-//                new AppBarConfiguration.Builder(R.id.help,R.id.providerLocation,R.id.account,R.id.submitDemand,R.id.createProject).build();
-////        NavigationUI.setupActionBarWithNavController(navController);
-//
-//        NavigationUI.setupWithNavController(btnNav, navController);
-//        BottomNavigationView bottomNav = findViewById(R.id.Nav);
-//        bottomNav.setOnNavigationItemReselectedListener((BottomNavigationView.OnNavigationItemReselectedListener) navListener);
-    }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener=
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment= null;
-                    switch(item.getItemId()){
-                        case R.id.help:
-                            selectedFragment=new Help();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment,selectedFragment).commit();
-                    return true;
+//        int id=getIntent().getExtras().getInt("id");
+//        if(id==1){
+//            replace(new SubmitDemand());
+//        }
+        bottomNavigationView=(BottomNavigationView)findViewById(R.id.Nav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.account:
+                        replace(new Account());
+                        break;
+                    case  R.id.help:
+                        replace(new Help());
+                        break;
+                    case R.id.providerLocation:
+                        replace(new ProviderLocation());
+                        break;
+                    case R.id.submitDemand:
+                        replace(new SubmitDemand());
+                        break;
+                    case R.id.createProject:
+                        replace(new CreateProject());
+                        break;
                 }
-            };
+                return true;
+            }
+        });
+    }
+
+    private void replace(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment,fragment);
+        transaction.commit();
+    }
+
 }
