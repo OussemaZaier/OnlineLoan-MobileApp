@@ -20,7 +20,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="#3D518C"
+            android:background="@color/home"
             android:padding="30dp">
 
             <ImageView
@@ -65,7 +65,7 @@
                         android:id="@+id/Modify"
                         android:layout_width="150dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/button_1"
+                        android:backgroundTint="@color/home"
                         android:drawableTop="@drawable/ic_edit"
                         android:paddingTop="20dp"
                         android:text="@string/edit"
@@ -91,7 +91,8 @@
                         android:id="@+id/ChangePwd"
                         android:layout_width="200dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/button_1"
+                        android:backgroundTint="@color/home"
+                        android:shadowRadius="@android:integer/config_longAnimTime"
                         android:drawableTop="@drawable/pwd"
                         android:paddingTop="20dp"
                         android:text="@string/change"

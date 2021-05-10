@@ -6,145 +6,165 @@
     android:layout_height="match_parent"
     tools:context=".register"
     android:gravity="center"
-    android:orientation="vertical"
-    android:background="@drawable/bg1">
+    android:orientation="vertical">
 
-
-    <Space
+    <View
         android:layout_width="match_parent"
-        android:layout_height="80dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/signup"
-        android:textColor="@color/Dark_1"
-        android:textSize="50dp" />
-    <Space
+        android:layout_height="130dp"
+        android:background="@color/Blue_1"/>
+    <View
         android:layout_width="match_parent"
-        android:layout_height="30dp"/>
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/input"
-        android:drawableLeft="@drawable/ic_user"
-        android:gravity="center"
-        android:hint="@string/username"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:singleLine="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_wave__1_"
         />
-
-    <Space
+    <View
         android:layout_width="match_parent"
-        android:layout_height="20dp"/>
-
-    <EditText
-        android:id="@+id/CIN"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_wave"
+        android:layout_marginTop="-120dp"/>
+    <!--    <TextView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="@string/signup"-->
+    <!--        android:textColor="@color/Dark_1"-->
+    <!--        android:textSize="50dp" />-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/input"
-        android:drawableLeft="@drawable/cincard"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:layout_height="572dp"
         android:gravity="center"
-        android:hint="@string/cinsignup"
-        android:inputType="number"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:singleLine="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/input"
-        android:drawableLeft="@drawable/phone"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:gravity="center"
-        android:hint="@string/phone"
-        android:inputType="number"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:singleLine="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
-    <EditText
-        android:id="@+id/PWD1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/input"
-        android:drawableLeft="@drawable/pwd"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:gravity="center"
-        android:hint="@string/pwd1"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:ems="15"
-        android:singleLine="true"
-        android:inputType="textPassword"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/ic_user"
+            android:drawableTint="@color/Gray3"
+            android:gravity="center"
+            android:hint="@string/username"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/PWD2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/input"
-        android:drawableLeft="@drawable/pwd"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:gravity="center"
-        android:hint="@string/pwd2"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:ems="15"
-        android:singleLine="true"
-        android:inputType="textPassword"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_1"
-        android:text="@string/signup" />
+        <EditText
+            android:id="@+id/CIN"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/cincard"
+            android:drawableTint="@color/Gray3"
+            android:gravity="center"
+            android:hint="@string/cinsignup"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="209dp"
-        android:layout_height="177dp"
-        android:translationX="-120dp"
-        android:translationY="-50dp"
-        app:srcCompat="@drawable/buttonpic" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/phone"
+            android:drawableTint="@color/Gray3"
+            android:gravity="center"
+            android:hint="@string/phone"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/PWD1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/pwd"
+            android:drawableTint="@color/Gray3"
+            android:ems="15"
+            android:gravity="center"
+            android:hint="@string/pwd1"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:id="@+id/PWD2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/input"
+            android:drawableLeft="@drawable/pwd"
+            android:drawableTint="@color/Gray3"
+            android:ems="15"
+            android:gravity="center"
+            android:hint="@string/pwd2"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
 
+        <Button
+            android:id="@+id/btnSignUp"
+            style="@style/Button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/Blue4"
+            android:elevation="8dp"
+            android:text="@string/signup"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="209dp"
+            android:layout_height="177dp"
+            android:translationX="-120dp"
+            android:translationY="-50dp"
+            app:srcCompat="@drawable/buttonpic" />
+
+    </LinearLayout>
 </LinearLayout>
