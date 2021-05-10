@@ -15,8 +15,15 @@
         <item name="colorOnBackground">@color/white</item>
     </style>
 
-        <style name="Button" parent="Theme.MaterialComponents.Light.DarkActionBar">
-            <item name="colorButtonNormal">@color/Blue_2</item>
+
+        <style name="Button" parent="Widget.MaterialComponents.Button.OutlinedButton">
+            <item name="shapeAppearanceOverlay">@style/MyShapeAppearance</item>
         </style>
+    <style name="MyShapeAppearance">
+        <item name="cornerSizeBottomRight">32dp</item>
+        <item name="cornerSizeTopRight">32dp</item>
+        <item name="cornerSizeTopLeft">32dp</item>
+        <item name="cornerSizeBottomLeft">32dp</item>
+    </style>
 
 </resources>

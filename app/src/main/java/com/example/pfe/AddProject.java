@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -51,6 +52,7 @@ public class AddProject extends AppCompatActivity {
     private ImageView img,imgLogo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         binding=ActivityAddProjectBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_add_project);
@@ -59,7 +61,7 @@ public class AddProject extends AppCompatActivity {
         String[] items =getResources().getStringArray(R.array.projectType);;
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.projecttypeselector, items);
         dropdown.setAdapter(adapter);
-        binding.surface.setVisibility(View.GONE);
+        binding.Surface.setVisibility(View.GONE);
         binding.pictureDiploma.setVisibility(View.GONE);
         binding.pictureLogo.setVisibility(View.GONE);
         dropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,7 +71,7 @@ public class AddProject extends AppCompatActivity {
 
                 switch (selectedValue){
                     case "Medical Cabinet":
-                        binding.surface.setVisibility(View.GONE);
+                        binding.Surface.setVisibility(View.GONE);
                         binding.pictureLogo.setVisibility(View.GONE);
                         binding.pictureDiploma.setVisibility(View.VISIBLE);
                         img=(ImageView)findViewById(R.id.img);
@@ -103,7 +105,7 @@ public class AddProject extends AppCompatActivity {
                         break;
 
                     case "Commercial":
-                        binding.surface.setVisibility(View.GONE);
+                        binding.Surface.setVisibility(View.GONE);
                         binding.pictureDiploma.setVisibility(View.GONE);
                         binding.pictureLogo.setVisibility(View.VISIBLE);
                         imgLogo=(ImageView)findViewById(R.id.imgLogo);
@@ -137,7 +139,7 @@ public class AddProject extends AppCompatActivity {
                         break;
 
                     case "Agriculture":
-                        binding.surface.setVisibility(View.VISIBLE);
+                        binding.Surface.setVisibility(View.VISIBLE);
                         binding.pictureDiploma.setVisibility(View.GONE);
                         binding.pictureLogo.setVisibility(View.GONE);
                         break;

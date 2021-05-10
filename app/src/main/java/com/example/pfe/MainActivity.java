@@ -14,6 +14,7 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -93,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
                             .show();
                 }
                 else {
-                    ((CIN) getApplication()).setCIN(etCIN.getText().toString());
                     //start activity
-                    //startActivity(new Intent(MainActivity.this,SignaturePad.class));
+//                    ((CIN) getApplication()).setCIN(etCIN.getText().toString());
+//                    startActivity(new Intent(MainActivity.this,navActivity.class));
                     sendAndRequestResponse();
                 }
 

@@ -57,9 +57,9 @@
     <string name="projectname">Enter your project name here</string>
     <string name="projectdescription">Enter your project description here</string>
     <string name="projectsurface">Enter your project surface here</string>
-    <string name="pictureDiplome">Select your front local picture</string>
-    <string name="FrontPicLocal">Select your inside local picture</string>
-    <string name="InsidePicLocal">Select your diploma picture</string>
+    <string name="pictureDiplome">Select your diploma picture</string>
+    <string name="FrontPicLocal">Select your front local picture</string>
+    <string name="InsidePicLocal">Select your inside local picture</string>
     <string name="signaturePic">Set your signature</string>
     <string name="frontCIN">Select your front CIN picture</string>
     <string name="backCIN">Select your back CIN picture</string>
@@ -72,9 +72,16 @@
     <string name="SignatureSet">Set your signature</string>
     <string name="setLocation">Set your location</string>
     <string name="save">SAVE</string>
+    <string name="Describe">Describe your issue or idea here...</string>
+    <string name="sendFeed">Send us some feedback!</string>
+    <string name="feeddes">Do you have a suggestion or found some bug? Let us know in the field bellow</string>
+    <string name="Bug">Bug</string>
+    <string name="Comment">Comment</string>
+    <string name="Other">Other</string>
     <string name="address">Address:</string>
     <string name="clear">CLEAR</string>
     <string name="SET">SET</string>
+    <string name="help">HELP</string>
     <string-array name="projectType">
         <item>Medical Cabinet</item>
         <item>Commercial</item>

@@ -6,31 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".AddProject"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="@drawable/bg1">
+    android:gravity="center_horizontal">
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/Blue_1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/ic_wave3"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/ic_wave4"
+        android:layout_marginTop="-120dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="-180dp">
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bebas"
+        android:fontFamily="@font/sanslight"
         android:text="@string/addproject"
-        android:textColor="@color/Blue_1"
-        android:textSize="50dp"
+        android:textColor="@color/white"
+        android:textSize="30dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="120dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="70dp"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
-        app:boxStrokeColor="@color/white"
+        android:textColorHint="@color/Gray3"
+        app:hintTextColor="@color/Gray3"
+        app:boxStrokeColor="@color/Gray3"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -53,9 +78,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
-        app:boxStrokeColor="@color/white"
+        android:textColorHint="@color/Gray3"
+        app:hintTextColor="@color/Gray3"
+        app:boxStrokeColor="@color/Gray3"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -81,7 +106,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:boxStrokeColor="@color/white"
+        android:textColorHint="@color/Gray3"
+        app:hintTextColor="@color/Gray3"
+        app:boxStrokeColor="@color/Gray3"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -100,16 +127,17 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="50px"
             android:text="@string/projectType"
-            android:textColor="@color/white"/>
+            android:textColor="@color/Gray3"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Surface"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
-        app:boxStrokeColor="@color/white"
+        android:textColorHint="@color/Gray3"
+        app:hintTextColor="@color/Gray3"
+        app:boxStrokeColor="@color/Gray3"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
@@ -270,4 +298,5 @@
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         />
+    </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
