@@ -128,8 +128,11 @@ public class MainActivity extends AppCompatActivity {
                             //store CIN number
                             ((CIN) getApplication()).setCIN(etCIN.getText().toString());
                             //start activity
-                            Intent intent =new Intent(MainActivity.this,navActivity.class);
-//                            intent.putExtra("id",1);
+                            //Intent intent =new Intent(MainActivity.this,navActivity.class);
+//                            intent.putExtra("id","0");
+                            //startActivity(intent);
+                            Intent intent = new Intent(MainActivity.this, navActivity.class);
+                            intent.putExtra("FromMainActivity", "1");
                             startActivity(intent);
                         }
                         else

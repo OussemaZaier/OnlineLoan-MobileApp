@@ -5,17 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SelectModifyProject"
-    android:background="@drawable/bg1"
     android:orientation="vertical"
     android:gravity="center_horizontal">
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bebas"
-        android:text="@string/projects"
+        android:fontFamily="@font/sanslight"
+        android:text="@string/projects2"
         android:textColor="@color/Blue_1"
-        android:textSize="50dp"
+        android:textSize="42sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +28,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:fontFamily="@font/bebas"
+        android:fontFamily="@font/roboto"
         android:textSize="20sp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         />
@@ -41,7 +40,7 @@
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:fontFamily="@font/bebas"
+        android:fontFamily="@font/roboto"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         />
     <Button
@@ -51,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/bebas"
+        android:fontFamily="@font/roboto"
         android:textSize="20sp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         />
@@ -63,7 +62,6 @@
         android:text="@string/submit"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bebas"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textColor="@color/white"

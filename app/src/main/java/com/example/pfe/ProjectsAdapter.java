@@ -13,14 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectsAdapter extends RecyclerView.Adapter <ProjectsAdapter.MyProjectsHolder>{
-    String data1[],data2[];
     List<Project> projects=new ArrayList<>();
     Context context;
     private RecyclerViewListener listener;
-    public ProjectsAdapter(Context ct, List<Project> Projects, String s2[], RecyclerViewListener listener) {
+    public ProjectsAdapter(Context ct, List<Project> Projects, RecyclerViewListener listener) {
         context=ct;
         projects=Projects;
-        data2=s2;
         this.listener=listener;
     }
 

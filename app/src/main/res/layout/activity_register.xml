@@ -48,13 +48,16 @@
             android:background="@drawable/input"
             android:drawableLeft="@drawable/ic_user"
             android:drawableTint="@color/Gray3"
-            android:gravity="center"
+
             android:hint="@string/username"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:drawablePadding="20dp"
+            android:layout_gravity="start"
+            android:textAlignment="viewStart" />
 
         <Space
             android:layout_width="match_parent"
@@ -69,14 +72,16 @@
             android:background="@drawable/input"
             android:drawableLeft="@drawable/cincard"
             android:drawableTint="@color/Gray3"
-            android:gravity="center"
             android:hint="@string/cinsignup"
             android:inputType="number"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:drawablePadding="20dp"
+            android:layout_gravity="start"
+            android:textAlignment="viewStart"/>
 
         <Space
             android:layout_width="match_parent"
@@ -91,14 +96,16 @@
             android:background="@drawable/input"
             android:drawableLeft="@drawable/phone"
             android:drawableTint="@color/Gray3"
-            android:gravity="center"
             android:hint="@string/phone"
             android:inputType="number"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:drawablePadding="20dp"
+            android:layout_gravity="start"
+            android:textAlignment="viewStart"/>
 
         <Space
             android:layout_width="match_parent"
@@ -114,13 +121,15 @@
             android:drawableLeft="@drawable/pwd"
             android:drawableTint="@color/Gray3"
             android:ems="15"
-            android:gravity="center"
+            android:drawablePadding="20dp"
+            android:layout_gravity="start"
+            android:textAlignment="viewStart"
             android:hint="@string/pwd1"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:singleLine="true"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20dp" />
 
         <Space
@@ -137,13 +146,15 @@
             android:drawableLeft="@drawable/pwd"
             android:drawableTint="@color/Gray3"
             android:ems="15"
-            android:gravity="center"
+            android:drawablePadding="20dp"
+            android:layout_gravity="start"
+            android:textAlignment="viewStart"
             android:hint="@string/pwd2"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:singleLine="true"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20dp" />
 
 

@@ -28,6 +28,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.pfe.databinding.FragmentCreateProjectBinding;
+import com.example.pfe.databinding.FragmentSubmitDemandBinding;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -62,7 +63,7 @@ public class CreateProject extends Fragment {
 
     FloatingActionButton add;
 
-    FragmentCreateProjectBinding fragmentCreateProjectBinding;
+    private FragmentCreateProjectBinding fragmentCreateProjectBinding;
     //dec
     private String s1[], s2[];
     private RecyclerView Projects;
@@ -154,6 +155,7 @@ public class CreateProject extends Fragment {
                 sweetAlertDialog.cancel();
                 Intent intent=new Intent(getContext(),SelectModifyProject.class);
                 intent.putExtra("id",pos);
+                intent.putExtra("fragment","0");
                 startActivity(intent);
             }
         };
@@ -208,7 +210,7 @@ public class CreateProject extends Fragment {
                         projects.add(project);
                         s2 = getResources().getStringArray(R.array.testdesc);
                         setOnClickListner();
-                        ProjectsAdapter myAdapter = new ProjectsAdapter(getContext(), projects, s2,listener);
+                        ProjectsAdapter myAdapter = new ProjectsAdapter(getContext(), projects,listener);
                         Projects.setAdapter(myAdapter);
                         Projects.setLayoutManager(new LinearLayoutManager(getContext()));
                     } catch (JSONException e) {

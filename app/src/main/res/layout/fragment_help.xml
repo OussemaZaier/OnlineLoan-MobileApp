@@ -127,6 +127,9 @@
             android:text="@string/submit"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/sanslight"
+            style="@style/Button"
+            android:elevation="8dp"
+            android:padding="10dp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white"
             />

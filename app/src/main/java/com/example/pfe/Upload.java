@@ -2,8 +2,10 @@ package com.example.pfe;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,6 +34,12 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import org.osmdroid.api.IMapController;
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -54,69 +62,79 @@ public class Upload extends AppCompatActivity {
     String encodeImageString;
     String result;
     byte[] bytesofimage;
+    private MapView map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
+        Context ctx = getApplicationContext();
+        Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
         setContentView(R.layout.activity_upload);
-
-        img=(ImageView)findViewById(R.id.img);
-        upload=(Button)findViewById(R.id.upload);
-        browse=(Button)findViewById(R.id.browse);
-        t1=(EditText)findViewById(R.id.t2);
-        browse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Dexter.withActivity(Upload.this)
-                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                        .withListener(new PermissionListener() {
-                            @Override
-                            public void onPermissionGranted(PermissionGrantedResponse response)
-                            {
-                                Intent intent=new Intent(Intent.ACTION_PICK);
-                                intent.setType("image/*");
-                                startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
-                            }
-
-                            @Override
-                            public void onPermissionDenied(PermissionDeniedResponse response) {
-
-                            }
-
-                            @Override
-                            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
-                                token.continuePermissionRequest();
-                            }
-                        }).check();
-            }
-        });
-    upload.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            encodeBitmapImage(bitmap);
-            sendAndRequestResponse();
-        }
-    });
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
-        if(requestCode==1 && resultCode==RESULT_OK)
-        {
-            Uri filepath=data.getData();
-            try
-            {
-                InputStream inputStream=getContentResolver().openInputStream(filepath);
-                bitmap= BitmapFactory.decodeStream(inputStream);
-                img.setImageBitmap(bitmap);
-
-            }catch (Exception ex)
-            {
-
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
+        map=(MapView) findViewById(R.id.map);
+        map.setTileSource(TileSourceFactory.MAPNIK);
+        map.setBuiltInZoomControls(true);
+        GeoPoint startPoint=new GeoPoint(35.6746, 10.098);
+        IMapController mapController;
+        mapController=map.getController();
+        mapController.setZoom(18.0);
+        mapController.setCenter(startPoint);
+//        img=(ImageView)findViewById(R.id.img);
+//        upload=(Button)findViewById(R.id.upload);
+//        browse=(Button)findViewById(R.id.browse);
+//        t1=(EditText)findViewById(R.id.t2);
+//        browse.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Dexter.withActivity(Upload.this)
+//                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+//                        .withListener(new PermissionListener() {
+//                            @Override
+//                            public void onPermissionGranted(PermissionGrantedResponse response)
+//                            {
+//                                Intent intent=new Intent(Intent.ACTION_PICK);
+//                                intent.setType("image/*");
+//                                startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
+//                            }
+//
+//                            @Override
+//                            public void onPermissionDenied(PermissionDeniedResponse response) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+//                                token.continuePermissionRequest();
+//                            }
+//                        }).check();
+//            }
+//        });
+//    upload.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            encodeBitmapImage(bitmap);
+//            sendAndRequestResponse();
+//        }
+//    });
+//    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+//    {
+//        if(requestCode==1 && resultCode==RESULT_OK)
+//        {
+//            Uri filepath=data.getData();
+//            try
+//            {
+//                InputStream inputStream=getContentResolver().openInputStream(filepath);
+//                bitmap= BitmapFactory.decodeStream(inputStream);
+//                img.setImageBitmap(bitmap);
+//
+//            }catch (Exception ex)
+//            {
+//
+//            }
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
     }
     private void encodeBitmapImage(Bitmap bitmap)
     {

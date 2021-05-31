@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddProject"
+    >
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal">
-
 
     <View
         android:layout_width="match_parent"
@@ -158,8 +161,8 @@
         android:id="@+id/pictureDiploma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_1"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/button_2"
+
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="50px"
@@ -227,10 +230,10 @@
         android:id="@+id/pictureLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_1"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/button_2"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
         >
 
         <com.google.android.material.card.MaterialCardView
@@ -294,9 +297,13 @@
     <Button
         android:id="@+id/btnAdd"
         android:text="@string/add"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textSize="20sp"
+        android:layout_marginTop="-10dp"
+        style="@style/Button"
+
         />
     </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

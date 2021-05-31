@@ -68,7 +68,7 @@ public class ModifyGeneralInfo extends AppCompatActivity {
         getGI(id);
         binding.btnAdd.setText("modify");
         binding.textView2.setText("MODIFY PROJECT");
-        binding.surface.setVisibility(View.GONE);
+        binding.Surface.setVisibility(View.GONE);
         binding.pictureDiploma.setVisibility(View.GONE);
         binding.pictureLogo.setVisibility(View.GONE);
         binding.btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +87,7 @@ public class ModifyGeneralInfo extends AppCompatActivity {
                                 .setContentText("one field is empty")
                                 .show();
                     }else{
-                        Toast.makeText(getApplicationContext(),binding.name.getText().toString(),Toast.LENGTH_LONG).show();
+
                         ModifyProject();
                     }
                 }
@@ -140,8 +140,7 @@ public class ModifyGeneralInfo extends AppCompatActivity {
                             switch (response.getString("type")){
                                 case "1":
                                     dropdown.setText("Medical Cabinet");
-                                    Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_LONG).show();
-                                    binding.surface.setVisibility(View.GONE);
+                                    binding.Surface.setVisibility(View.GONE);
                                     binding.pictureLogo.setVisibility(View.GONE);
                                     binding.pictureDiploma.setVisibility(View.VISIBLE);
                                     img=(ImageView)findViewById(R.id.img);
@@ -176,8 +175,7 @@ public class ModifyGeneralInfo extends AppCompatActivity {
 
                                 case "2":
                                     dropdown.setText("Commercial");
-                                    Toast.makeText(getApplicationContext(),"2",Toast.LENGTH_LONG).show();
-                                    binding.surface.setVisibility(View.GONE);
+                                    binding.Surface.setVisibility(View.GONE);
                                     binding.pictureDiploma.setVisibility(View.GONE);
                                     binding.pictureLogo.setVisibility(View.VISIBLE);
                                     imgLogo=(ImageView)findViewById(R.id.imgLogo);
@@ -212,8 +210,7 @@ public class ModifyGeneralInfo extends AppCompatActivity {
 
                                 case "3":
                                     dropdown.setText("Agriculture");
-                                    Toast.makeText(getApplicationContext(),"3",Toast.LENGTH_LONG).show();
-                                    binding.surface.setVisibility(View.VISIBLE);
+                                    binding.Surface.setVisibility(View.VISIBLE);
                                     binding.pictureDiploma.setVisibility(View.GONE);
                                     binding.pictureLogo.setVisibility(View.GONE);
                                     binding.surface.setText(response.getString("surface"));
@@ -253,11 +250,12 @@ public class ModifyGeneralInfo extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(),"Added successfully",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
                         Intent intent =new Intent(ModifyGeneralInfo.this,navActivity.class);
-//                        intent.putExtra("fragement","Account");
+//                        intent.putExtra("fragment","1");
 //                        finish();
-                        startActivity(intent);
+
+                        startActivityForResult(intent,2);
                     }
                 },
                 new Response.ErrorListener() {

@@ -7,20 +7,46 @@
     tools:context=".GuaranteeInfo"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/bg1">
+>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/Blue_1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/ic_wave3"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/ic_wave4"
+            android:layout_marginTop="-120dp"/>
+    </LinearLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="-205dp">
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bebas"
-        android:text="@string/LocalInfo"
-        android:textColor="@color/Blue_1"
-        android:textSize="50dp"
-        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sanslight"
+        android:text="@string/GuaranteeInfo"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="70dp"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -28,10 +54,10 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="70dp">
         <EditText
-            android:id="@+id/name"
+            android:id="@+id/type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/projectname"
+            android:hint="@string/guaranteeType"
             android:textColor="@color/black"
             android:textSize="15dp"
             android:layout_marginLeft="10dp"
@@ -39,6 +65,7 @@
             android:maxLines="1"
             android:singleLine="true"
             android:layout_marginBottom="50px"
+
             />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50px"
-            android:hint="@string/projectdescription"
+            android:hint="@string/guaranteedesc"
             android:textColor="@color/black"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -61,8 +88,7 @@
         android:id="@+id/pictureDiploma"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_1"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/button_2"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="50px"
@@ -105,7 +131,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pictureDiplome"
+                    android:text="@string/guaranteePic"
                     android:textColor="@color/Blue_1"/>
 
                 <Button
@@ -129,8 +155,11 @@
     <Button
         android:id="@+id/btnAdd"
         android:text="@string/add"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textSize="20sp"
+        android:layout_marginTop="-10dp"
+        style="@style/Button"
         />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

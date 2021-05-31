@@ -25,6 +25,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,16 +45,26 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class LocalInfo extends AppCompatActivity {
-    private Button SetLocation,inside,front;
+    private Button SetLocation,inside,front,add;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private TextView Address;
     private Bitmap bitmap;
+    private String id;
+    private String address="";
+    private double latitude,longitude;
     private ImageView insidePic, frontPic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +72,16 @@ public class LocalInfo extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local_info);
-
+        id=getIntent().getExtras().getString("id");
         SetLocation=(Button)findViewById(R.id.SetLocation);
         Address=(TextView)findViewById(R.id.Address);
+        add=(Button)findViewById(R.id.btnAdd);
         inside=(Button)findViewById(R.id.btnInsideLocal);
         front=(Button)findViewById(R.id.btnFrontLocal);
         insidePic=(ImageView)findViewById(R.id.InsideLocalPic);
         frontPic=(ImageView)findViewById(R.id.FrontLocalPic);
         fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this);
+        getLI();
         SetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +95,9 @@ public class LocalInfo extends AppCompatActivity {
                                     try {
                                         List<Address> addresses=geocoder.getFromLocation(location.getLatitude(), location.getLongitude(),1);
                                         Address.setText(addresses.get(0).getAddressLine(0));
+                                        address=addresses.get(0).getAddressLine(0);
+                                        latitude=addresses.get(0).getLatitude();
+                                        longitude=addresses.get(0).getLongitude();
                                         //Address.setText(addresses.get(0).getLatitude());
                                         //Address.setText(addresses.get(0).getLong());
                                     } catch (IOException e) {
@@ -142,6 +165,97 @@ public class LocalInfo extends AppCompatActivity {
                         }).check();
             }
         });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(address.equals("")){
+                    new SweetAlertDialog(LocalInfo.this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Something went wrong!")
+                            .setContentText("one field is empty")
+                            .show();
+                }else{
+                addLocalInfo();
+                }
+            }
+        });
+
+    }
+
+    private void addLocalInfo() {
+        String URL="http://192.168.1.16:8080/rest/webapi/projects/updateLI";
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        StringRequest objectRequest=new StringRequest(
+                Request.Method.PUT,
+                URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
+                        Intent intent =new Intent(LocalInfo.this,navActivity.class);
+                        startActivity(intent);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        new SweetAlertDialog(LocalInfo.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Something went wrong!")
+                                .setContentText(error.toString())
+                                .show();
+                    }
+                })
+        {
+            @Override
+            public Map<String,String> getHeaders() throws AuthFailureError {
+                Map<String,String> params=new HashMap<>();
+                params.put("ID",id);
+                params.put("address",address);
+                String La=String.valueOf(latitude);
+                params.put("latitude",La);
+                String Lo=String.valueOf(longitude);
+                params.put("longitude",Lo);
+                return params;
+            }
+        };
+        requestQueue.add(objectRequest);
+    }
+
+    private void getLI(){
+        String URL = "http://192.168.1.16:8080/rest/webapi/projects/getLI";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, URL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            if(response.length()!=0){
+                            Address.setText(response.getString("address")+" latitude:"+response.getString("latitude")+" longitude:"+response.getString("longitude"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                new SweetAlertDialog(LocalInfo.this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Something went wrong!")
+                        .setContentText(error.toString())
+                        .show();
+
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("ID",id);
+                return params;
+            }
+        };
+        requestQueue.add(objectRequest);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
