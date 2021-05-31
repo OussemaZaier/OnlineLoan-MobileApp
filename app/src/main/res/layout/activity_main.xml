@@ -27,7 +27,7 @@
         android:layout_width="308dp"
         android:layout_height="161dp"
         android:layout_marginTop="-60dp"
-        app:srcCompat="@drawable/homepic" />
+        app:srcCompat="@drawable/caracter2" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,7 +39,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
         <EditText
@@ -47,13 +48,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/CINHint"
+
             android:textColor="@color/black"
             android:textSize="15dp"
             android:maxLines="1"
             android:singleLine="true"
             android:layout_marginBottom="50px"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
             android:inputType="number"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -63,6 +63,8 @@
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/Blue_2"
         android:outlineAmbientShadowColor="@color/Blue4"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <EditText
             android:id="@+id/etPassword"
@@ -74,8 +76,7 @@
             android:textColor="@color/black"
             android:ems="15"
             android:inputType="textPassword"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
+
             />
     </com.google.android.material.textfield.TextInputLayout>
 <!--    <TextView-->

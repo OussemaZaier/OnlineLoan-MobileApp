@@ -1,32 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LocalInfo"
+
+>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="@drawable/bg1">
+    android:gravity="center_horizontal">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/Blue_1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/ic_wave3"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/ic_wave4"
+        android:layout_marginTop="-120dp"/>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="-205dp">
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bebas"
+        android:fontFamily="@font/sanslight"
         android:text="@string/LocalInfo"
-        android:textColor="@color/Blue_1"
-        android:textSize="50dp"
-        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="42sp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="10dp"/>
+
+        android:layout_marginBottom="80dp"/>
     <LinearLayout
         android:id="@+id/Location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_1"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/button_2"
         android:layout_marginTop="50px"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -55,9 +85,8 @@
                     android:id="@+id/Address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:textColor="@color/black" />
 
             </RelativeLayout>
@@ -101,8 +130,7 @@
         android:id="@+id/FrontLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_1"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/button_2"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="50px"
@@ -170,8 +198,7 @@
         android:id="@+id/InsideLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_1"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/button_2"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="50px"
@@ -238,8 +265,12 @@
     <Button
         android:id="@+id/btnAdd"
         android:text="@string/add"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textSize="20sp"
+        android:layout_marginTop="-10dp"
+        style="@style/Button"
         />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

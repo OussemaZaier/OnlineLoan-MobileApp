@@ -133,8 +133,8 @@ public class Account extends Fragment {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse response)
                             {
-                                Intent intent=new Intent(Intent.ACTION_PICK);
-                                intent.setType("image/*");
+                                Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
+                                intent.setType("*/*");
                                 startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
                             }
 
